@@ -19,9 +19,9 @@ const { data, id } = Astro.props.job;
 		width=1
 		height=1
 	/>
-	<p>
-		{data.startDate.toLocaleDateString()} - {data.endDate?.toLocaleDateString() ?? "present"}
-	</p>
+	<span>
+		{data.startDate.toLocaleDateString()} - {data.endDate?.toLocaleDateString() ?? "Present"}
+	</span>
 </a>
 
 <style>
@@ -40,13 +40,7 @@ const { data, id } = Astro.props.job;
 		font-weight: 500;
 		transition: box-shadow var(--theme-transition);
 	}
-	
-	p{
-		width: 100%;
-		left: 0;
-		right: 0;
-		text-align: center;
-	}
+
 
 	.card:hover {
 		box-shadow: var(--shadow-md);
