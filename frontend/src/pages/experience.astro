@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import ContactCTA from '../components/ContactCTA.astro';
+import List from '../components/List.astro';
+import Hero from '../components/Hero.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ExperiencePreview from '../components/Experience/ExperiencePreview.astro'
+
+const projects = (await getCollection('employment')).sort(
+	(a, b) =>  b.data.startDate.valueOf() - a.data.startDate.valueOf(),
+);
+---
+
+<BaseLayout
+	title="Experience | Nathan Doherty"
+	description="Learn about Nathan Doherty's most recent projects"
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero
+				title="Employment History"
+				tagline="todo"
+				align="center"
+			/>
+			<List>
+				{
+					projects.map((post, i) => (
+							<li>
+								<ExperiencePreview job={post}/>
+							</li>
+					))
+				}
+			</List>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>

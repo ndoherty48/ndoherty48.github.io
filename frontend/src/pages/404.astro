@@ -1,0 +1,48 @@
+---
+import CallToAction from '../components/CallToAction.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Not Found" description="404 Error — this page was not found">
+	<Hero title="Page Not Found" tagline="Not found" />
+
+	<aside>
+		<CallToAction href="/">
+			Home
+			<Icon icon="arrow-left" size="1.2em" />
+		</CallToAction>
+	</aside>
+</BaseLayout>
+
+<style>
+	aside {
+		display: flex;
+		align-items: center;
+		gap: 3rem;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 5rem 1.5rem;
+	}
+
+	h2 {
+		font-size: var(--text-xl);
+		text-align: center;
+		max-width: 15ch;
+	}
+
+	@media (min-width: 50em) {
+		aside {
+			padding: 7.5rem;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+
+		h2 {
+			font-size: var(--text-3xl);
+			text-align: left;
+		}
+	}
+</style>

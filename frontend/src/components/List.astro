@@ -1,0 +1,43 @@
+---
+interface Props {
+}
+
+// const { variant } = Astro.props;
+---
+
+<ul class:list={['list']}>
+	<slot />
+</ul>
+
+<style>
+	.list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 2rem;
+		list-style: none;
+	}
+
+	@media (min-width: 50em) {
+		.list.offset {
+			--row-offset: 7.5rem;
+			padding-bottom: var(--row-offset);
+		}
+
+		/* Shift first item in each row vertically to create staggered effect. */
+		.list.offset > :global(:nth-child(odd)) {
+			transform: translateY(var(--row-offset));
+		}
+
+		.list.small {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 2rem;
+		}
+
+		.list.small > :global(*) {
+			flex-basis: 20rem;
+		}
+	}
+</style>
