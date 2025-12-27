@@ -9,6 +9,7 @@ export const collections = {
 			title: z.string(),
 			description: z.string(),
 			hidden: z.boolean().default(false),
+			img_hidden: z.boolean().default(false),
 			publishDate: z.date(),
 			tags: z.array(z.string()),
 			img: z.string(),

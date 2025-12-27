@@ -17,20 +17,10 @@ tags:
 
 ## Overview
 
-<>
-
 ## Implementation
-
-<>
 
 ### Development
 
-<>
-
 ### Testing
 
-<>
-
 ### Hosting
-
-<>
