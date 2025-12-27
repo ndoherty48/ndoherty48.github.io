@@ -4,6 +4,7 @@ import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Pill from '../components/Pill.astro';
+import Grid from '../components/Grid.astro';
 ---
 
 <BaseLayout title="About | Nathan Doherty" description="About me">
@@ -25,22 +26,35 @@ import Pill from '../components/Pill.astro';
 				<h2 class="section-title">Background</h2>
 				<div class="content">
 					<p>
-						Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy. Sed
-						do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum
-						id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla
-						pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+						I began my career as a Java Backend Engineer during my placement year, working on an enterprise 
+						market data ingestion platform for a major financial institution. I then completed my BSc in 
+						Computer Science, graduating with First Class Honours. My final-year project involved building 
+						an offline-capable, web-based Point of Sale system using AWS.
 					</p>
+					<br/>
 					<p>
-						Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis
-						natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl
-						condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel
-						quam elementum pulvinar etiam non.
+						After graduating, I joined HighRoads as a Full Stack Engineer in a predominantly .NET team, 
+						working with React, .NET Framework, .NET Core, and Java. I contributed to both backend and UI 
+						enhancements while deepening my AWS expertise. This included leading the migration of Windows servers 
+						from manually managed “pets” to a scalable, fault-tolerant AMI-based solution using EC2 Image Builder, 
+						replacing Jenkins and Salt-based configurations.
 					</p>
+					<br/>
 					<p>
-						Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet
-						eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
-						Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl
-						pretium fusce.
+						I actively explore new AWS services to improve platform architecture, such as using AWS Lambda to 
+						reduce manual processes and enhance customer experience. Over time, I have taken on greater 
+						responsibility in solution design and architecture.
+					</p>
+					<br/>
+					<p>
+						In April 2023, I was promoted to Senior Software Engineer, contributing to the re-architecture and 
+						migration of legacy .NET Framework monoliths into containerized .NET 7 microservices to improve 
+						maintainability, readability, and testability.
+					</p>
+					<br/>
+					<p>
+						In May 2023, I achieved the AWS Certified Developer - Associate certification, further strengthening 
+						my ability to design and build effective solutions on AWS.
 					</p>
 				</div>
 			</section>
@@ -48,6 +62,7 @@ import Pill from '../components/Pill.astro';
 				<h2 class="section-title">Education</h2>
 				<div class="content">
 					<p><b>BSc. Computer Science</b>, Ulster University, 2021</p>
+					<br/>
 					<p>
 						Studied Computer Science at Ulster University, Magee, Covering topics such as: 
 						Programming, Database, Cyber Security, Enterprise Computing, Algorithms & Data Structures, 
@@ -63,7 +78,30 @@ import Pill from '../components/Pill.astro';
 			<section>
 				<h2 class="section-title">Skills</h2>
 				<div class="content">
-					<p>officia unde omnis</p>
+					<h3>Software Engineering</h3>
+					<Grid variant='small'>
+						<Pill>Dotnet</Pill> 
+						<Pill>Aspire</Pill>
+						<Pill>Java</Pill>
+						<Pill>Springboot</Pill>
+						<Pill>JavaScript / TypeScript</Pill>
+						<Pill>React</Pill>
+					</Grid>
+					<h3>Cloud / DevOps</h3>
+					<Grid variant='small'>
+						<Pill>AWS</Pill>
+						<Pill>CloudFormation</Pill>
+						<Pill>ECS</Pill>
+						<Pill>EC2 Image Builder</Pill>
+						<Pill>Code Pipeline</Pill>
+						<Pill>Code Build</Pill>
+					</Grid>
+					<h3>Observability / Tracing</h3>
+					<Grid variant="small">
+						<Pill>Open Telemetry</Pill>
+						<Pill>Prometheus</Pill>
+						<Pill>Grafana</Pill>
+					</Grid>
 				</div>
 			</section>
 		</main>
@@ -100,6 +138,11 @@ import Pill from '../components/Pill.astro';
 
 	.content {
 		grid-column: 2 / 4;
+	}
+
+	.content h3 {
+		margin-top: 5px;
+		margin-bottom: 15px;
 	}
 
 	.content :global(a) {

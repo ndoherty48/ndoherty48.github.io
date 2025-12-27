@@ -1,5 +1,5 @@
-﻿#:package Aspire.Hosting.JavaScript@13.2.0-preview.1.25619.3
-#:sdk Aspire.AppHost.Sdk@13.2.0-preview.1.25619.3
+﻿#:package Aspire.Hosting.JavaScript@13.2.0-preview.1.25621.2
+#:sdk Aspire.AppHost.Sdk@13.2.0-preview.1.25621.2
 
 var builder = DistributedApplication.CreateBuilder(args);
 
@@ -9,3 +9,4 @@ var fe = builder.AddJavaScriptApp("frontend", "./frontend")
     .WithHttpEndpoint(targetPort: 4321, isProxied: false);
 
 builder.Build().Run();
+
