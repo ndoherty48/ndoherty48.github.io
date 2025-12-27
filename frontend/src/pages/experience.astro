@@ -6,9 +6,10 @@ import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ExperiencePreview from '../components/Experience/ExperiencePreview.astro'
 
-const projects = (await getCollection('employment')).sort(
-	(a, b) =>  b.data.startDate.valueOf() - a.data.startDate.valueOf(),
-);
+const projects = (await getCollection('employment'))
+	.sort(
+		(a, b) =>  b.data.startDate.valueOf() - a.data.startDate.valueOf()
+	);
 ---
 
 <BaseLayout

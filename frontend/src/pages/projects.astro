@@ -9,8 +9,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const projects = (await getCollection('projects'))
 	.filter(x => x.data.hidden === false)
 	.sort(
-		(a, b) => a.data.publishDate.valueOf() - b.data.publishDate.valueOf(),
-	);
+        (a, b) => {
+            const aDate = a.data.lastModifiedDate?.valueOf() ?? a.data.publishDate.valueOf();
+            const bDate = b.data.lastModifiedDate?.valueOf() ?? b.data.publishDate.valueOf();
+            return bDate - aDate;
+        }
+    );
 ---
 
 <BaseLayout
