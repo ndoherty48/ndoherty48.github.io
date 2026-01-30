@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import CallToAction from '../CallToAction.astro';
 import ExperiencePreview from '../Experience/ExperiencePreview.astro';
 import Icon from '../Icon.astro';
-import List from '../List.astro';
+import Grid from '../Grid.astro';
 
 const currentEmployment = (await getCollection("employment"))
 	.sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf())[0]
@@ -16,7 +16,7 @@ const currentEmployment = (await getCollection("employment"))
     </header>
 
     <div class="gallery">
-        <List>
+        <Grid>
             <li><ExperiencePreview job={currentEmployment}/></li>
         </Grid>
     </div>
