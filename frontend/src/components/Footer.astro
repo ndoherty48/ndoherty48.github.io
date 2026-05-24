@@ -2,6 +2,10 @@
 import Icon from './Icon.astro';
 
 const currentYear = new Date().getFullYear();
+const commitHash = import.meta.env.PUBLIC_COMMIT_SHA?.slice(0, 7) || 'dev';
+const commitUrl = import.meta.env.PUBLIC_COMMIT_SHA
+	? `https://github.com/ndoherty48/ndoherty48.github.io/commit/${import.meta.env.PUBLIC_COMMIT_SHA}`
+	: undefined;
 ---
 
 <footer>
@@ -10,7 +14,7 @@ const currentYear = new Date().getFullYear();
 			Built with <a href="https://astro.build/">Astro</a>
 			<Icon icon="rocket-launch" size="1.2em" />
 		</p>
-		<p>&copy; {currentYear} Nathan Doherty</p>
+		<p>&copy; {currentYear} Nathan Doherty &middot; {commitUrl ? <a href={commitUrl}>{commitHash}</a> : commitHash}</p>
 	</div>
 	<p class="socials">
 		<a href="https://x.com/ndoherty48"> Twitter / X</a>

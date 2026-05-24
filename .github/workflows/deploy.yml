@@ -25,6 +25,8 @@ jobs:
         with:
           path: ./frontend
           node-version: 24
+        env:
+          PUBLIC_COMMIT_SHA: ${{ github.sha }}
   deploy:
     needs: build
     runs-on: ubuntu-latest
