@@ -16,9 +16,18 @@ interface Props {
 		justify-content: center;
 		gap: 2rem;
 		list-style: none;
+		padding: 0;
+	}
+
+	.list > :global(li) {
+		width: 100%;
 	}
 
 	@media (min-width: 50em) {
+		.list > :global(li) {
+			width: auto;
+			flex: 1 1 40%;
+		}
 		.list.offset {
 			--row-offset: 7.5rem;
 			padding-bottom: var(--row-offset);
