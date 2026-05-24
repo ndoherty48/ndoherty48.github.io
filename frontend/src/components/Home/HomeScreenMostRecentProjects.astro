@@ -15,11 +15,11 @@ const projects = (await getCollection('projects'))
 <section class="section with-background with-cta">
 	<header class="section-header stack gap-2 lg:gap-4">
 		<h3>Projects</h3>
-		<p>Take a look below at some of the projects I have worked on:</p>
+		<p>Personal and side projects.</p>
 	</header>
 
 	<div class="gallery">
-		<Grid variant="offset">
+		<Grid variant={projects.length > 1 ? "offset" : undefined}>
 			{
 				projects.map((project) => (
 					<li>

@@ -31,6 +31,12 @@ const { variant } = Astro.props;
 			gap: 4rem;
 		}
 
+		.grid > :global(:only-child) {
+			grid-column: 1 / -1;
+			max-width: 50%;
+			margin-inline: auto;
+		}
+
 		.grid.offset {
 			--row-offset: 7.5rem;
 			padding-bottom: var(--row-offset);

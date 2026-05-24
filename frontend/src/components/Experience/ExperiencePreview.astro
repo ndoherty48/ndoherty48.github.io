@@ -19,8 +19,9 @@ const { data, id } = Astro.props.job;
 		width=1
 		height=1
 	/>
+	<span class="employer">{data.employer}</span>
 	<span class="date">
-		{data.startDate.toLocaleDateString()} - {data.endDate?.toLocaleDateString() ?? "Present"}
+		{data.startDate.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' })} - {data.endDate?.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }) ?? "Present"}
 	</span>
 </a>
 
@@ -62,6 +63,12 @@ const { data, id } = Astro.props.job;
 		object-position: center;
 		padding: 1rem;
 		min-height: 0;
+	}
+
+	.employer {
+		font-size: var(--text-md);
+		color: var(--gray-300);
+		font-weight: 400;
 	}
 
 	.date {
