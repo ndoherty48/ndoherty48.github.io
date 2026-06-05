@@ -19,7 +19,7 @@ tags:
 
 ## Summary
 
-FullStack Engineer working across frontend migration and infrastructure modernisation for a benefits administration platform, delivering cost savings and improved resilience through server consolidation and automated image builds.
+FullStack Engineer working across frontend migration and infrastructure modernisation for a Health plan management platform, delivering cost savings and improved resilience through server consolidation and automated image builds.
 
 ## Responsibilities
 
