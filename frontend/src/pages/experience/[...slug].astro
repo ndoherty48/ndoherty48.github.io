@@ -90,7 +90,7 @@ const { Content } = await render(entry);
 	}
 
 	.content {
-		max-width: 65ch;
+		max-width: 100%;
 		margin-inline: auto;
 	}
 
@@ -104,6 +104,16 @@ const { Content } = await render(entry);
 	.content :global(h4),
 	.content :global(h5) {
 		margin: 1.5rem 0;
+	}
+
+	.content :global(h2) {
+		font-size: var(--text-2xl);
+		overflow-wrap: break-word;
+	}
+
+	.content :global(h3) {
+		font-size: var(--text-xl);
+		overflow-wrap: break-word;
 	}
 
 	.content :global(img) {
@@ -126,6 +136,7 @@ const { Content } = await render(entry);
 	.back-link,
 	.content :global(a) {
 		text-decoration: 1px solid underline transparent;
+		overflow-wrap: anywhere;
 		text-underline-offset: 0.25em;
 		transition: text-decoration-color var(--theme-transition);
 	}
@@ -138,6 +149,14 @@ const { Content } = await render(entry);
 	}
 
 	@media (min-width: 50em) {
+		.content :global(h2) {
+			font-size: var(--text-4xl);
+		}
+
+		.content :global(h3) {
+			font-size: var(--text-3xl);
+		}
+
 		.back-link {
 			display: block;
 			align-self: flex-start;

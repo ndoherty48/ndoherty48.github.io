@@ -1,7 +1,8 @@
 ---
 title: nathandoherty.dev
 publishDate: 2025-12-27
-img: /assets/projects/nathandoherty.dev.png
+img: /assets/projects/nathandoherty-dot-dev.svg
+img_alt: Cloud and server icon from the Nathan Doherty Applications logo
 img_hidden: true
 description: Project for hosting this site which is hosted on github pages
 tags:

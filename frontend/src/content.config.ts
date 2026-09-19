@@ -27,6 +27,7 @@ export const collections = {
 			lastModifiedDate: z.date().optional(),
 			tags: z.array(z.string()),
 			img: z.string(),
+			img_hidden: z.boolean().default(true),
 			img_alt: z.string().optional(),
 		}),
 	}),

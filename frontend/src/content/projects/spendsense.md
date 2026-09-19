@@ -1,7 +1,8 @@
 ---
 title: SpendSense
 publishDate: 2026-06-01
-img: /assets/projects/spendsense.png
+img: /assets/projects/spendsense.svg
+img_alt: SpendSense logo
 img_hidden: true
 description: A cross-platform personal budgeting app built with .NET MAUI Blazor Hybrid and Aspire
 tags:

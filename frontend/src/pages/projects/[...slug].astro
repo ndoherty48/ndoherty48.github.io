@@ -122,7 +122,13 @@ const lastModifiedDate =
 	}
 
 	.content :global(h2) {
-		font-size: 2.5rem;
+		font-size: var(--text-2xl);
+		overflow-wrap: break-word;
+	}
+
+	.content :global(h3) {
+		font-size: var(--text-xl);
+		overflow-wrap: break-word;
 	}
 
 	.content :global(img) {
@@ -145,6 +151,7 @@ const lastModifiedDate =
 	.back-link,
 	.content :global(a) {
 		text-decoration: 1px solid underline transparent;
+		overflow-wrap: anywhere;
 		text-underline-offset: 0.25em;
 		transition: text-decoration-color var(--theme-transition);
 	}
@@ -169,6 +176,10 @@ const lastModifiedDate =
 
 		.content :global(h2) {
 			font-size: var(--text-4xl);
+		}
+
+		.content :global(h3) {
+			font-size: var(--text-3xl);
 		}
 
 		.content :global(blockquote) {

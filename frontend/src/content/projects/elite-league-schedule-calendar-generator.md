@@ -1,8 +1,9 @@
 ---
-title: Elite League Schedule Calendar Generator
+title: EIHL Calendar Generator
 publishDate: 2025-07-14
 lastModifiedDate: 2026-05-26
-img: /assets/projects/nathandoherty.dev.png
+img: /assets/projects/elite-league-schedule-calendar-generator.svg
+img_alt: Calendar with a puck on game day
 img_hidden: true
 description: Generates subscribable .ICS calendar files for all 10 EIHL teams by scraping the official Elite Ice Hockey League website.
 tags:

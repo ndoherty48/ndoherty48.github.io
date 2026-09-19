@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1472" height="871" viewBox="0 0 1472 871" role="img" aria-labelledby="puckdrop-card-title">
+  <title id="puckdrop-card-title">PuckDrop</title>
+  <defs>
+    <radialGradient id="ice" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#16345A"/>
+      <stop offset="100%" stop-color="#0B1928"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1472" height="871" fill="url(#ice)"/>
+
+  <!-- Faint rink markings: blue lines, red centre line and centre circle -->
+  <g opacity="0.35">
+    <rect x="296" y="0" width="22" height="871" fill="#2460B7"/>
+    <rect x="1154" y="0" width="22" height="871" fill="#2460B7"/>
+    <rect x="728" y="0" width="16" height="871" fill="#DE3C37"/>
+  </g>
+  <circle cx="736" cy="435.5" r="265" fill="none" stroke="#75CAF2" stroke-width="6" opacity="0.3"/>
+
+  <!-- The app's logo mark (wwwroot/logo.svg, 32x32) scaled to 320px and centred -->
+  <g transform="translate(576 275.5) scale(10)">
+    <rect width="32" height="32" rx="8" fill="#75CAF2"/>
+    <path d="M11 5.5v4M16 4v6M21 5.5v4" fill="none" stroke="#0E2743" stroke-width="2.2" stroke-linecap="round"/>
+    <ellipse cx="16" cy="17" rx="9" ry="3.4" fill="#0E2743"/>
+    <path d="M7 17v4.2c0 1.9 4 3.4 9 3.4s9-1.5 9-3.4V17c0 1.9-4 3.4-9 3.4S7 18.9 7 17z" fill="#0E2743"/>
+  </g>
+</svg>

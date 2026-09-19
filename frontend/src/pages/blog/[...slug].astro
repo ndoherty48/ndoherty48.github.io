@@ -56,7 +56,7 @@ const lastModifiedDate =
 			<main class="wrapper">
 				<div class="stack gap-10 content">
 					{
-						entry.data.img && (
+						entry.data.img && entry.data.img_hidden === false && (
 							<img
 								src={entry.data.img}
 								alt={entry.data.img_alt || ""}
@@ -104,7 +104,7 @@ const lastModifiedDate =
 	}
 
 	.content {
-		max-width: 65ch;
+		max-width: 100%;
 		margin-inline: auto;
 	}
 
@@ -118,6 +118,16 @@ const lastModifiedDate =
 	.content :global(h4),
 	.content :global(h5) {
 		margin: 1.5rem 0;
+	}
+
+	.content :global(h2) {
+		font-size: var(--text-2xl);
+		overflow-wrap: break-word;
+	}
+
+	.content :global(h3) {
+		font-size: var(--text-xl);
+		overflow-wrap: break-word;
 	}
 
 	.content :global(img) {
@@ -140,6 +150,7 @@ const lastModifiedDate =
 	.back-link,
 	.content :global(a) {
 		text-decoration: 1px solid underline transparent;
+		overflow-wrap: anywhere;
 		text-underline-offset: 0.25em;
 		transition: text-decoration-color var(--theme-transition);
 	}
@@ -152,6 +163,14 @@ const lastModifiedDate =
 	}
 
 	@media (min-width: 50em) {
+		.content :global(h2) {
+			font-size: var(--text-4xl);
+		}
+
+		.content :global(h3) {
+			font-size: var(--text-3xl);
+		}
+
 		.back-link {
 			display: block;
 			align-self: flex-start;
