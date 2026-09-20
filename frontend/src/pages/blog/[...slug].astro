@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection, render } from "astro:content";
 
 import ContactCTA from "../../components/ContactCTA.astro";
 import Hero from "../../components/Hero.astro";
+import Lightbox from "../../components/Lightbox.astro";
 import Icon from "../../components/Icon.astro";
 import Pill from "../../components/Pill.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -26,8 +27,8 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 
 const lastModifiedDate =
-	entry.data.lastModifiedDate?.toLocaleDateString() ??
-	entry.data.publishDate.toLocaleDateString();
+	entry.data.lastModifiedDate?.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) ??
+	entry.data.publishDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
@@ -71,6 +72,7 @@ const lastModifiedDate =
 		</div>
 		<ContactCTA />
 	</div>
+	<Lightbox />
 </BaseLayout>
 
 <style>

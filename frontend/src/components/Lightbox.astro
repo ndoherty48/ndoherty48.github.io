@@ -1,0 +1,165 @@
+---
+/**
+ * Click-to-enlarge for images inside `.content`.
+ *
+ * Drop `<Lightbox />` into a page and every content image becomes clickable.
+ * The overlay opens the image fitted to the screen; clicking it again switches
+ * to full size so you can pan around — handy on a phone, where a 1920px wide
+ * screenshot is otherwise squeezed into ~310px.
+ *
+ * Without JavaScript the images render exactly as before.
+ */
+---
+
+<dialog class="lightbox" aria-label="Enlarged image">
+	<button class="close" type="button" aria-label="Close image">
+		<svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">
+			<path
+				d="M6 6l12 12M18 6L6 18"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+			></path>
+		</svg>
+	</button>
+	<div class="surface">
+		<img alt="" />
+	</div>
+</dialog>
+
+<style>
+	.lightbox {
+		width: 100vw;
+		max-width: 100vw;
+		height: 100dvh;
+		max-height: 100dvh;
+		margin: 0;
+		padding: 0;
+		border: none;
+		background: transparent;
+		overflow: hidden;
+	}
+
+	.lightbox::backdrop {
+		background: rgb(9 11 17 / 0.9);
+	}
+
+	.surface {
+		width: 100%;
+		height: 100%;
+		display: grid;
+		place-items: center;
+		overflow: auto;
+		overscroll-behavior: contain;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.lightbox img {
+		display: block;
+		max-width: 100%;
+		max-height: 100dvh;
+		cursor: zoom-in;
+	}
+
+	/* Full size: the surface scrolls and the image is pannable. */
+	.lightbox[data-zoomed] img {
+		max-width: none;
+		max-height: none;
+		cursor: zoom-out;
+	}
+
+	.close {
+		position: fixed;
+		z-index: 1;
+		top: 0.75rem;
+		right: 0.75rem;
+		display: grid;
+		place-items: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		padding: 0;
+		border: 1px solid var(--gray-800);
+		border-radius: 999rem;
+		background: var(--gray-999);
+		color: var(--gray-100);
+		cursor: pointer;
+	}
+
+	.close:hover,
+	.close:focus-visible {
+		background: var(--gray-900);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.lightbox[open] {
+			animation: fade 0.15s ease-out;
+		}
+	}
+
+	@keyframes fade {
+		from {
+			opacity: 0;
+		}
+	}
+</style>
+
+<style is:global>
+	.content img.zoomable {
+		cursor: zoom-in;
+	}
+</style>
+
+<script>
+	const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox');
+	const surface = dialog?.querySelector<HTMLDivElement>('.surface');
+	const full = dialog?.querySelector('img');
+	const close = dialog?.querySelector<HTMLButtonElement>('.close');
+	const images = document.querySelectorAll<HTMLImageElement>('.content img');
+
+	if (dialog && surface && full && close && images.length) {
+		const setZoom = (on: boolean) => {
+			if (on) {
+				dialog.setAttribute('data-zoomed', '');
+				// Start in the middle rather than the top left corner.
+				surface.scrollLeft = (surface.scrollWidth - surface.clientWidth) / 2;
+				surface.scrollTop = (surface.scrollHeight - surface.clientHeight) / 2;
+			} else {
+				dialog.removeAttribute('data-zoomed');
+			}
+		};
+
+		const open = (image: HTMLImageElement) => {
+			full.src = image.currentSrc || image.src;
+			full.alt = image.alt;
+			setZoom(false);
+			dialog.showModal();
+		};
+
+		for (const image of images) {
+			image.classList.add('zoomable');
+			image.tabIndex = 0;
+			image.setAttribute('role', 'button');
+			image.addEventListener('click', () => open(image));
+			image.addEventListener('keydown', (event) => {
+				if (event.key === 'Enter' || event.key === ' ') {
+					event.preventDefault();
+					open(image);
+				}
+			});
+		}
+
+		// Clicking the image toggles full size; clicking beside it closes.
+		full.addEventListener('click', () => setZoom(!dialog.hasAttribute('data-zoomed')));
+		surface.addEventListener('click', (event) => {
+			if (event.target === surface) dialog.close();
+		});
+		close.addEventListener('click', () => dialog.close());
+
+		// Release the image so it is not kept in memory between openings.
+		dialog.addEventListener('close', () => {
+			full.removeAttribute('src');
+			setZoom(false);
+		});
+	}
+</script>
