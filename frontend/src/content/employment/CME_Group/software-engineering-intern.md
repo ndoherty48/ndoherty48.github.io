@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Intern
 employer: CME Group
-startDate: 2018-07-15
+startDate: 2019-07-15
 endDate: 2021-06-30
 img: /assets/employment/cme-group.png
 img_alt: Logo of employer CME Group
