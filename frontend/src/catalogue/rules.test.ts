@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
 	isRoleScheduled,
 	isScheduled,
+	latestActivity,
 	latestRole,
 	listedEntries,
 	listedRoles,
@@ -61,6 +62,18 @@ describe('listed entries', () => {
 		listedEntries(entries, date('2027-01-01'));
 
 		expect(ids(entries)).toEqual(['older', 'newer']);
+	});
+});
+
+describe('latest activity', () => {
+	it('is the last-modified date once an entry has been updated', () => {
+		const post = entry('post', '2025-07-14', { lastModifiedDate: '2026-05-26' });
+
+		expect(latestActivity(post)).toEqual(date('2026-05-26'));
+	});
+
+	it('is the publish date when an entry has never been updated', () => {
+		expect(latestActivity(entry('post', '2025-07-14'))).toEqual(date('2025-07-14'));
 	});
 });
 

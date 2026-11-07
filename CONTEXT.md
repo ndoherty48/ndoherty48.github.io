@@ -4,8 +4,12 @@ The portfolio site of Nathan Doherty: projects, blog posts and employment histor
 
 ## Language
 
+**Entry**:
+A single project, blog post or role.
+_Avoid_: Item, post (when you mean any kind of entry)
+
 **Published**:
-A project or blog post that is not hidden and whose publish date has arrived. Only published entries are listed on the site.
+A project or blog post that is not hidden and whose publish date has arrived. Hidden and scheduled entries are never listed.
 _Avoid_: Live, visible
 
 **Scheduled**:

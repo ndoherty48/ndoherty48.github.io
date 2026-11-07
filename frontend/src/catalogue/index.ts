@@ -10,6 +10,8 @@ import {
 	listedRoles as findListedRoles,
 } from './rules';
 
+export { latestActivity } from './rules';
+
 // One date per build, so every page agrees on what has been published.
 const now = new Date();
 

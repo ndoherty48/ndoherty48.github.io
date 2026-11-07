@@ -15,8 +15,8 @@ interface Role {
 	};
 }
 
-const latestActivity = ({ data }: Publishable) =>
-	Math.max(data.publishDate.valueOf(), data.lastModifiedDate?.valueOf() ?? 0);
+export const latestActivity = ({ data }: Publishable) =>
+	new Date(Math.max(data.publishDate.valueOf(), data.lastModifiedDate?.valueOf() ?? 0));
 
 const hasStarted = (role: Role, now: Date) => role.data.startDate <= now;
 
@@ -31,7 +31,7 @@ export const entriesWithPages = <T extends Publishable>(entries: T[]) =>
 export const listedEntries = <T extends Publishable>(entries: T[], now: Date) =>
 	entriesWithPages(entries)
 		.filter((entry) => !isScheduled(entry, now))
-		.sort((a, b) => latestActivity(b) - latestActivity(a));
+		.sort((a, b) => latestActivity(b).valueOf() - latestActivity(a).valueOf());
 
 export const listedRoles = <T extends Role>(roles: T[], now: Date) =>
 	roles
