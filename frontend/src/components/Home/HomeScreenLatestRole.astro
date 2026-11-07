@@ -1,14 +1,14 @@
 ---
-import { getCollection } from 'astro:content';
+import { latestRole } from '../../catalogue';
 import CallToAction from '../CallToAction.astro';
 import ExperiencePreview from '../Experience/ExperiencePreview.astro';
 import Icon from '../Icon.astro';
 import Grid from '../Grid.astro';
 
-const currentEmployment = (await getCollection("employment"))
-	.sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf())[0]
+const role = await latestRole();
 
 ---
+{role && (
 <section class="section with-background with-cta">
     <header class="section-header stack gap-2 lg:gap-4">
         <h3>Experience</h3>
@@ -17,7 +17,7 @@ const currentEmployment = (await getCollection("employment"))
 
     <div class="gallery">
         <Grid>
-            <li><ExperiencePreview job={currentEmployment}/></li>
+            <li><ExperiencePreview job={role}/></li>
         </Grid>
     </div>
 
@@ -27,7 +27,8 @@ const currentEmployment = (await getCollection("employment"))
             <Icon icon="arrow-right" size="1.2em" />
         </CallToAction>
     </div>
-</section>	
+</section>
+)}	
 
 <style>
     .section {

@@ -1,20 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import { listedProjects } from '../catalogue';
 import ContactCTA from '../components/ContactCTA.astro';
 import List from '../components/List.astro';
 import Hero from '../components/Hero.astro';
 import PortfolioPreview from '../components/Portfolio/PortfolioPreview.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const projects = (await getCollection('projects'))
-	.filter(x => x.data.hidden === false)
-	.sort(
-        (a, b) => {
-            const aDate = a.data.lastModifiedDate?.valueOf() ?? a.data.publishDate.valueOf();
-            const bDate = b.data.lastModifiedDate?.valueOf() ?? b.data.publishDate.valueOf();
-            return bDate - aDate;
-        }
-    );
+const projects = await listedProjects();
 ---
 
 <BaseLayout

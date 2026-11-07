@@ -1,15 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import { listedRoles } from '../catalogue';
 import ContactCTA from '../components/ContactCTA.astro';
 import List from '../components/List.astro';
 import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ExperiencePreview from '../components/Experience/ExperiencePreview.astro'
 
-const projects = (await getCollection('employment'))
-	.sort(
-		(a, b) =>  b.data.startDate.valueOf() - a.data.startDate.valueOf()
-	);
+const roles = await listedRoles();
 ---
 
 <BaseLayout
@@ -25,7 +22,7 @@ const projects = (await getCollection('employment'))
 			/>
 			<List>
 				{
-					projects.map((post, i) => (
+					roles.map((post, i) => (
 						<li>
 							<ExperiencePreview job={post}/>
 						</li>
