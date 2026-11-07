@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 // Page section components
+import CallToAction from '../components/CallToAction.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
@@ -19,17 +20,33 @@ import HomeScreenMostRecentProjects from '../components/Home/HomeScreenMostRecen
 	<div class="stack gap-20 lg:gap-48">
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
-				<Hero
-					title="Hello, my name is Nathan Doherty"
-					tagline="I am a Senior Software Engineer based in Northern Ireland."
-					align="start"
-				>
-					<div class="roles">
-						<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
-						<Pill><Icon icon="terminal-window" size="1.33em" /> DevOps</Pill>
-						<Pill><Icon icon="rocket-launch" size="1.33em" /> AWS Certified Developer</Pill>
-					</div>
-				</Hero>
+				<div class="intro">
+					<a class="status" href="#contact">
+						<span class="status-dot" aria-hidden="true"></span>
+						Open to work from January 2027
+					</a>
+					<Hero
+						title="Hello, my name is Nathan Doherty"
+						tagline="I am a Senior Software Engineer based in Northern Ireland, looking for my next role."
+						align="start"
+					>
+						<div class="roles">
+							<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
+							<Pill><Icon icon="terminal-window" size="1.33em" /> DevOps</Pill>
+							<Pill><Icon icon="rocket-launch" size="1.33em" /> AWS Certified Developer</Pill>
+						</div>
+						<div class="actions">
+							<CallToAction href="https://linkedin.com/in/nathandoherty48">
+								Get in Touch
+								<Icon icon="paper-plane-tilt" size="1.2em" />
+							</CallToAction>
+							<CallToAction href="/experience/" variant="outline">
+								View My Experience
+								<Icon icon="arrow-right" size="1.2em" />
+							</CallToAction>
+						</div>
+					</Hero>
+				</div>
 
 				<Image 
 					width="1553" 
@@ -60,8 +77,82 @@ import HomeScreenMostRecentProjects from '../components/Home/HomeScreenMostRecen
 		gap: 2rem;
 	}
 
+	.intro {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	.status {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.625rem;
+		min-height: 2.75rem;
+		padding: 0.5rem 1.125rem 0.5rem 0.875rem;
+		font-family: var(--font-brand);
+		font-weight: 500;
+		line-height: 1.2;
+		color: var(--gray-100);
+		text-decoration: none;
+		border: 1px solid var(--gray-700);
+		border-radius: 999rem;
+		background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
+		box-shadow: var(--shadow-md);
+		transition: border-color var(--theme-transition);
+	}
+
+	.status:hover,
+	.status:focus-visible {
+		border-color: var(--gray-500);
+	}
+
+	.status-dot {
+		position: relative;
+		flex: none;
+		width: 0.625rem;
+		height: 0.625rem;
+		border-radius: 50%;
+		background: var(--status-available);
+	}
+
+	.status-dot::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: 50%;
+		background: var(--status-available);
+		animation: status-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+	}
+
+	@keyframes status-ping {
+		0% {
+			transform: scale(1);
+			opacity: 0.6;
+		}
+		70%,
+		100% {
+			transform: scale(2.6);
+			opacity: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.status-dot::after {
+			animation: none;
+			opacity: 0;
+		}
+	}
+
 	.roles {
 		display: none;
+	}
+
+	.actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin-top: 0.5rem;
 	}
 
 	.hero img {
@@ -80,10 +171,19 @@ import HomeScreenMostRecentProjects from '../components/Home/HomeScreenMostRecen
 			gap: 3.75rem;
 		}
 
+		.intro {
+			align-items: flex-start;
+		}
+
 		.roles {
 			margin-top: 0.5rem;
 			display: flex;
 			gap: 0.5rem;
+		}
+
+		.actions {
+			flex-direction: row;
+			flex-wrap: wrap;
 		}
 
 		.hero img {

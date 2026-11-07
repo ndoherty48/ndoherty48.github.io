@@ -1,12 +1,13 @@
 ---
 interface Props {
 	href: string;
+	variant?: 'filled' | 'outline';
 }
 
-const { href } = Astro.props;
+const { href, variant = 'filled' } = Astro.props;
 ---
 
-<a href={href}><slot /></a>
+<a href={href} class={variant}><slot /></a>
 
 <style>
 	a {
@@ -24,6 +25,20 @@ const { href } = Astro.props;
 		background: var(--gradient-accent-orange);
 		box-shadow: var(--shadow-md);
 		white-space: nowrap;
+	}
+
+	/* Keep the longer labels inside the page gutters on the narrowest phones. */
+	@media (max-width: 22em) {
+		a {
+			padding-inline: 1em;
+		}
+	}
+
+	a.outline {
+		color: var(--gray-100);
+		background: none;
+		box-shadow: none;
+		border: 1px solid var(--link-color);
 	}
 
 	@media (min-width: 20em) {

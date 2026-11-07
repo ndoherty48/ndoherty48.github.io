@@ -3,17 +3,16 @@ import CallToAction from './CallToAction.astro';
 import Icon from './Icon.astro';
 ---
 
-
-
-<!-- Disabling this until i decide how i want to handle contact -->
-
-<!-- <aside>
-	<h2>Interested in working together?</h2>
-	<CallToAction href="">
-		Send Me a Message
+<aside id="contact">
+	<div class="stack gap-4 copy">
+		<h2>Interested in working together?</h2>
+		<p>I'm looking for my next senior engineering role from January 2027. If your team needs a hand building cloud-native software, I'd love to hear from you.</p>
+	</div>
+	<CallToAction href="https://linkedin.com/in/nathandoherty48">
+		Get in Touch
 		<Icon icon="paper-plane-tilt" size="1.2em" />
 	</CallToAction>
-</aside> -->
+</aside>
 
 <style>
 	aside {
@@ -28,10 +27,20 @@ import Icon from './Icon.astro';
 		box-shadow: var(--shadow-sm);
 	}
 
+	.copy {
+		text-align: center;
+		align-items: center;
+	}
+
 	h2 {
 		font-size: var(--text-xl);
-		text-align: center;
-		max-width: 15ch;
+		max-width: 18ch;
+	}
+
+	p {
+		max-width: 46ch;
+		font-size: var(--text-md);
+		color: var(--gray-300);
 	}
 
 	@media (min-width: 50em) {
@@ -42,9 +51,17 @@ import Icon from './Icon.astro';
 			justify-content: space-between;
 		}
 
+		.copy {
+			text-align: left;
+			align-items: flex-start;
+		}
+
 		h2 {
 			font-size: var(--text-3xl);
-			text-align: left;
+		}
+
+		p {
+			font-size: var(--text-lg);
 		}
 	}
 </style>
